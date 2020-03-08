@@ -3,7 +3,6 @@
 
 OnButtonPressed onButtonPressed;
 int stateA, stateB, countA, countB;
-unsigned long lastMillis;
 
 void init_led_button(OnButtonPressed func)
 {
@@ -13,17 +12,10 @@ void init_led_button(OnButtonPressed func)
     pinMode(buttonBpin, INPUT_PULLUP);
     stateA = BUTTON_RELEASED;
     stateB = BUTTON_RELEASED;
-    lastMillis = millis();
 }
 
 void check_button()
 {
-    unsigned long curMillis = millis();
-    if (curMillis - lastMillis < 100) {
-        return;
-    }
-    lastMillis = curMillis;
-
     int newStateA = BUTTON_NO_CHANGE;
     int newStateB = BUTTON_NO_CHANGE;
 
